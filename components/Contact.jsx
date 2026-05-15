@@ -1,8 +1,8 @@
 // Contact — large CTA block
 
 const CONTACT_VERBS = ['ship', 'launch', 'design', 'make', 'build'];
-const VERB_STEP_MS = 380;       // pacing between verbs
-const UNDERLINE_DELAY_MS = 260; // pause after “build” lands before underline draws
+const VERB_STEP_MS = 520;       // pacing between verbs
+const UNDERLINE_DELAY_MS = 320; // pause after “build” lands before underline draws
 
 const contactStyles = {
   wrap: { padding: 'clamp(100px, 16vh, 200px) max(20px, 4vw)', position: 'relative', overflow: 'hidden' },
@@ -20,7 +20,82 @@ const contactStyles = {
   detailValue: { fontFamily: 'var(--serif)', fontSize: 22, color: 'var(--ink)', letterSpacing: '-0.01em', lineHeight: 1.25 },
 };
 
-function Contact() {
+function UnderlineMark({ variant }) {
+  if (variant === 'none') return null;
+
+  if (variant === 'highlighter') {
+    return <span className="verb-highlight" aria-hidden="true" />;
+  }
+
+  const common = {
+    fill: 'none',
+    stroke: 'currentColor',
+    strokeLinecap: 'round',
+    vectorEffect: 'non-scaling-stroke',
+  };
+
+  let viewBox = '-6 0 112 14';
+  let body;
+
+  switch (variant) {
+    case 'brush':
+      // Filled tapered brushstroke (no stroke — a shape).
+      viewBox = '-6 0 112 16';
+      body = (
+        <path
+          d="M -4 9 C 24 6, 56 12, 104 7.5 C 56 13.5, 24 10.5, -4 10.5 Z"
+          fill="currentColor"
+        />
+      );
+      break;
+    case 'double':
+      body = (
+        <>
+          <path d="M -2 5.5 L 104 6.5" strokeWidth="5" {...common} />
+          <path d="M -2 11.5 L 104 12.5" strokeWidth="5" {...common} />
+        </>
+      );
+      break;
+    case 'scribble':
+      // Zig-zag back-and-forth, marker-on-paper feel.
+      body = (
+        <path
+          d="M -2 9 L 8 5 L 18 11 L 28 5 L 38 11 L 48 5 L 58 11 L 68 5 L 78 11 L 88 5 L 98 11 L 104 7"
+          strokeWidth="6"
+          strokeLinejoin="round"
+          {...common}
+        />
+      );
+      break;
+    case 'squiggle':
+      body = (
+        <path
+          d="M -2 8 C 14 3, 28 13, 42 8 S 70 3, 84 8 S 110 13, 104 8"
+          strokeWidth="6"
+          {...common}
+        />
+      );
+      break;
+    case 'marker':
+    default:
+      body = (
+        <path d="M -2 8 L 104 9.2" strokeWidth="9" {...common} />
+      );
+  }
+
+  return (
+    <svg
+      className="verb-underline"
+      viewBox={viewBox}
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      {body}
+    </svg>
+  );
+}
+
+function Contact({ underline = 'marker' }) {
   const sectionRef = React.useRef(null);
   const [verbIdx, setVerbIdx] = React.useState(0);
   const [prevVerb, setPrevVerb] = React.useState(null);
@@ -56,7 +131,7 @@ function Contact() {
   // Clear the outgoing verb shortly after the swap so it doesn't widen the cell.
   React.useEffect(() => {
     if (!prevVerb) return;
-    const t = setTimeout(() => setPrevVerb(null), 360);
+    const t = setTimeout(() => setPrevVerb(null), 560);
     return () => clearTimeout(t);
   }, [prevVerb]);
 
@@ -92,22 +167,7 @@ function Contact() {
               className="verb-in"
               style={{ gridArea: 'stack', display: 'inline-block', willChange: 'transform, clip-path' }}
             >{verb}</span>
-            <svg
-              className={'verb-underline' + (locked ? ' is-drawn' : '')}
-              viewBox="0 0 100 10"
-              preserveAspectRatio="none"
-              aria-hidden="true"
-            >
-              <path
-                d="M 1.5 6.5 C 18 2.5, 38 8, 55 4.5 S 86 3, 98.5 5.5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                vectorEffect="non-scaling-stroke"
-                pathLength="1"
-              />
-            </svg>
+            {locked && <UnderlineMark variant={underline} />}
           </span>
           <br/>something.
         </h2>
@@ -152,43 +212,58 @@ function Contact() {
       </div>
       <style>{`
         @keyframes verb-in {
-          0%   { transform: translateY(0.75em); clip-path: inset(0 -0.3em 100% -0.05em); opacity: 0; }
-          55%  { opacity: 1; }
-          100% { transform: translateY(0);      clip-path: inset(-0.15em -0.3em -0.08em -0.05em); opacity: 1; }
+          0%   { transform: translateY(0.35em); opacity: 0; filter: blur(6px); }
+          100% { transform: translateY(0);      opacity: 1; filter: blur(0); }
         }
         @keyframes verb-out {
-          0%   { transform: translateY(0);       clip-path: inset(-0.15em -0.3em -0.08em -0.05em); opacity: 1; }
-          100% { transform: translateY(-0.75em); clip-path: inset(100% -0.3em 0 -0.05em);          opacity: 0; }
+          0%   { transform: translateY(0);       opacity: 1; filter: blur(0); }
+          100% { transform: translateY(-0.35em); opacity: 0; filter: blur(6px); }
         }
-        .verb-in  { animation: verb-in  .46s cubic-bezier(.22,.85,.25,1) both; padding-right: 0.08em; }
-        .verb-out { animation: verb-out .34s cubic-bezier(.55,.05,.5,.95) both; padding-right: 0.08em; }
+        .verb-in  { animation: verb-in  .55s cubic-bezier(.33,.0,.2,1) both;  padding-right: 0.08em; }
+        .verb-out { animation: verb-out .55s cubic-bezier(.4,0,.6,1)   both;  padding-right: 0.08em; }
 
         .verb-underline {
           position: absolute;
-          left: 0;
-          right: 0;
-          bottom: 0.02em;
-          width: 100%;
-          height: 0.18em;
+          left: -0.04em;
+          right: -0.04em;
+          bottom: -0.18em;
+          width: calc(100% + 0.08em);
+          height: 0.38em;
           color: var(--accent);
           overflow: visible;
           pointer-events: none;
+          clip-path: inset(0 100% 0 0);
+          animation: underline-wipe 1.7s cubic-bezier(.7,.04,.32,1) .05s forwards;
+          will-change: clip-path;
         }
-        .verb-underline path {
-          stroke-dasharray: 1;
-          stroke-dashoffset: 1;
-          transition: stroke-dashoffset .85s cubic-bezier(.65,.05,.35,1);
+        .verb-highlight {
+          position: absolute;
+          left: -0.08em;
+          right: -0.08em;
+          top: 0.08em;
+          bottom: 0.08em;
+          background: var(--accent);
+          opacity: 0.22;
+          border-radius: 4px;
+          pointer-events: none;
+          z-index: -1;
+          clip-path: inset(0 100% 0 0);
+          animation: underline-wipe 1.2s cubic-bezier(.7,.04,.32,1) .05s forwards;
+          will-change: clip-path;
         }
-        .verb-underline.is-drawn path { stroke-dashoffset: 0; }
+        @keyframes underline-wipe {
+          from { clip-path: inset(0 100% 0 0); }
+          to   { clip-path: inset(0 0 0 0); }
+        }
 
         @media (prefers-reduced-motion: reduce) {
           .verb-in, .verb-out { animation: none; }
-          .verb-underline path { transition: none; stroke-dashoffset: 0; }
+          .verb-underline, .verb-highlight { animation: none; clip-path: inset(0 0 0 0); }
         }
         @media (max-width: 720px) {
           .contact-details { flex-direction: column !important; gap: 24px !important; }
           #contact h2 { line-height: 1.08 !important; }
-          .verb-underline { bottom: 0.06em; height: 0.14em; }
+          #contact { padding-top: 72px !important; padding-bottom: 48px !important; }
         }
       `}</style>
     </section>
