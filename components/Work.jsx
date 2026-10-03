@@ -134,7 +134,7 @@ function Work() {
           </h2>
         </div>
         <p style={workStyles.intro} className="reveal" data-delay="1">
-          A shortlist from the last seven years. Each one earned its place by moving a metric, a brand, a community.
+          A shortlist from the last seven years. Each one earned its place by moving something: a metric, a brand, a community.
         </p>
       </div>
 
@@ -504,7 +504,7 @@ function Accordion({ startIdx }) {
       { kind: 'image', src: 'assets/ariana-share.png', label: 'Ariana Grande Instagram story share' },
       { kind: 'image', src: 'assets/watan-campaigns-grid.png', label: 'Watan Project campaigns overview' }]
     },
-    desc: 'Watan Project started as a response to a gap I saw growing up. Young Afghan-Americans had strong cultural identity but no clear way to turn that into action. I founded the nonprofit to change that, building the platform through content, campaigns, and community-driven fundraising focused on urgent needs in Afghanistan like food, water, and emergency relief. Early campaigns used simple, guerrilla marketing tactics that encouraged people to participate, share, and bring others in, allowing the movement to grow organically without paid media.\n\nAs momentum grew, so did the impact, scaling to a 6,000+ donor network, funding 8 large-scale projects, and raising $400K+ for families in crisis. At the peak of the 2021 Afghanistan crisis, the movement broke beyond the diaspora and was picked up by major platforms and media. Newsweek covered the campaign, we were interviewed by Globo News (the largest media group in Latin America), and @feminist featured Watan Project alongside leading global nonprofits. That momentum culminated in international pop star Ariana Grande sharing a giving guide that included Watan Project to her 300M+ audience, turning a grassroots movement into worldwide reach.\n\n$400K raised. 1000+ families aided. Real impact delivered. So that\u2019s how you get Ariana Grande to share your campaign with 300+ million people.',
+    desc: 'Watan Project started as a response to a gap I saw growing up. Young Afghan-Americans had strong cultural identity but no clear way to turn that into action. I founded the nonprofit to change that, building the platform through community-driven fundraising and campaigns focused on urgent needs in Afghanistan, from food and water access to emergency relief. Early campaigns used simple guerrilla marketing tactics designed to get people involved and give them something they wanted to share, allowing the movement to grow organically without paid media.\n\nAs momentum grew, so did the impact. We built a 6,000+ donor network and funded 8 large-scale projects, raising $400K+ for families in crisis along the way. At the peak of the 2021 Afghanistan crisis, the movement broke beyond the diaspora and was picked up by major platforms and media. Newsweek covered the campaign and we were interviewed by Globo News, the largest media group in Latin America. @feminist also featured Watan Project alongside leading global nonprofits. That momentum culminated in international pop star Ariana Grande sharing a giving guide that included Watan Project to her 300M+ audience, taking a grassroots movement to a worldwide audience.\n\n$400K raised. 1,000+ families aided. Real impact delivered. So that\u2019s how you get Ariana Grande to share your campaign with 300+ million people.',
     tags: ['Brand strategy', 'Positioning', 'Viral mechanics', 'Social media'],
     inlineStats: [
     { n: '$400K+', l: 'Raised', hl: true },
@@ -521,7 +521,7 @@ function Accordion({ startIdx }) {
       { kind: 'image', src: 'assets/eblast-ab-tests.png', label: 'Lifecycle email A/B testing' },
       { kind: 'image', src: 'assets/ocuw-homepage.png', label: 'OC United Way homepage' }]
     },
-    desc: 'I inherited an email campaign workflow sitting at a 17.3% open rate, the nonprofit industry baseline, and a website that hadn\u2019t been treated as a growth channel in years. I spent the year testing what most teams don\u2019t: subject lines, send times by donor segment, content length, and CTA placement. I tied SEO directly to the donor topics that converted, and kept campaign content fresh instead of letting it go stale between cycles. By year-end, open rate doubled to 36.6% and held. Site traffic increased 150% YoY. The result of disciplined experimentation and consistently executing what worked.',
+    desc: "I inherited an email campaign workflow sitting at a 17.3% open rate, the nonprofit industry baseline, and a website that hadn’t been treated as a growth channel in years. I spent the year testing everything from subject lines and send times by donor segment to content length and CTA placement. I tied SEO directly to the donor topics that converted, and kept campaign content fresh instead of letting it go stale between cycles. By year-end, open rate doubled to 36.6% and held. Site traffic increased 150% YoY. That came from disciplined experimentation and consistently executing what worked.",
     inlineStats: [
     { n: '2×', l: 'Email open rate', hl: true },
     { n: '+150%', l: 'Web traffic YoY' },
@@ -535,7 +535,7 @@ function Accordion({ startIdx }) {
     org: 'Tustin Chamber of Commerce · Marketing Lead',
     title: 'Engagement isn’t just a metric. It’s a conversation. 715% growth proved it.',
     left: { kind: 'image', label: 'Tustin Chamber media', src: 'assets/tustin-growth.png' },
-    desc: 'Social media works when it feels like a conversation, not a broadcast. At the Tustin Chamber of Commerce, I shifted the strategy from pushing announcements to showing up for the audience: replying to comments, spotlighting members, turning local business owners into people worth following. The content started feeling like a community. The audience grew 715%.\n',
+    desc: "Social media works best when there’s an actual conversation happening with the audience. At the Tustin Chamber of Commerce, I shifted the strategy away from simply pushing announcements and focused more on showing up for the audience. We replied to comments and spotlighted members, while making local business owners people worth following. The content started feeling like a community. The audience grew 715%.",
     inlineStats: [
     { n: '715%', l: 'Audience growth', hl: true },
     { n: 'Multi-channel', l: 'Execution' }],
@@ -547,7 +547,7 @@ function Accordion({ startIdx }) {
     org: 'Orange County United Way · Marketing Manager',
     title: 'This is not your grandmother’s United Way. It’s better.',
     left: { kind: 'image', label: 'OC Way collateral', srcs: ['assets/oc-way-annual-report.png', 'assets/oc-way-book.png'] },
-    desc: 'Orange County United Way has been around since 1924. In 2025, it rebranded from the ground up, and I was inside it. My job was building the collateral that had to carry a century-old organization’s new identity into rooms full of decision-makers: C-suite executives, major donors, and corporate partners who still pictured the old logo and a donation tin. Letterpress invitations, gold foil, premium print. Pitch decks that led with impact data, not the usual nonprofit playbook. Branded reports that partners actually kept. Every piece was designed for an audience that judges credibility by design quality before they read a single word. A hundred years of history, finally dressed for the room it deserved to be in.\n',
+    desc: "Orange County United Way has been around since 1924. In 2025, it rebranded from the ground up, and I was inside it. My job was building the collateral that had to carry a century-old organization’s new identity into rooms full of decision-makers, from C-suite executives and major donors to corporate partners who still pictured the old logo and a donation tin.\n\nThat meant letterpress invitations with gold foil and premium print, pitch decks built around impact data, and branded reports that partners actually kept. Every piece was designed for an audience that judges credibility by design quality before they read a single word.\n\nA hundred years of history, finally dressed for the room it deserved to be in.",
     inlineStats: [
     { n: 'Est. 1924', l: 'Legacy organization' },
     { n: '2025', l: 'Full rebrand', hl: true },
@@ -561,7 +561,7 @@ function Accordion({ startIdx }) {
     org: 'Orange County United Way · Marketing Manager',
     title: 'Nobody asked for a live conversation series. We built one anyway.',
     left: { kind: 'image', label: 'Cultures United: A Conversation Series', src: 'assets/cultures-united.png' },
-    desc: 'Cultures United started as a quarterly live-streamed conversation series with no audience and no playbook. Over two years I owned every part of it: guest curation, run-of-show, promotion, and post-event review each cycle. The growth wasn\u2019t luck. I A/B tested reminder sequences to get more people to actually show up, moved platforms when the numbers told me to, got panelists to promote to their own audiences, and tightened the email and editorial strategy every quarter. As a result viewership grew by 30% and held. Not a spike, a sustained lift built through testing and compounding small improvements over time.',
+    desc: "Cultures United started as a quarterly live-streamed conversation series with no audience and no playbook. Over two years I owned the series end to end, from guest curation and run-of-show to promotion and post-event review each cycle. The growth wasn’t luck. I A/B tested reminder sequences to get more people to actually show up and moved platforms when the numbers told me to. I also got panelists to promote to their own audiences while tightening the email and editorial strategy every quarter. As a result, viewership grew by 30% and held. The sustained lift came from testing and small improvements that compounded over time.",
     inlineStats: [
     { n: '+30%', l: 'Viewership', hl: true },
     { n: '4×', l: 'Cycles per year' },
@@ -575,7 +575,7 @@ function Accordion({ startIdx }) {
     org: 'Stardog · Account Development Representative',
     title: 'When the product needs a translator, be the translator.',
     left: { kind: 'image', label: 'Stardog outbound sequence', src: 'assets/stardog-pipeline.png' },
-    desc: "Stardog's buyers were engineers and data leaders who could spot a generic pitch immediately. Selling a B2B SaaS product built on graph database technology meant learning to translate: getting fluent enough in the product to speak directly to the prospect's problem. Before reaching out to anyone, I researched their role, company initiatives, and likely pain points so the message felt written for them, not sent to them. Landing meetings at enterprise accounts like ExxonMobil validated that specificity opens doors that volume never would. The process generated 8+ pipeline opportunities.",
+    desc: "Stardog's buyers were engineers and data leaders who could spot a generic pitch immediately. Selling a B2B SaaS product built on graph database technology meant learning to translate: getting fluent enough in the product to speak directly to the prospect's problem. Before reaching out to anyone, I researched the person and what their company was working on, then dug into the pain points they were likely dealing with. That gave me something specific to say when I reached out. Landing meetings at enterprise accounts like ExxonMobil validated that specificity opens doors that volume never would. The process generated 8+ pipeline opportunities.",
     inlineStats: [
     { n: '40+', l: 'Daily qualified leads', hl: true },
     { n: 'SQL', l: 'Hands-on' },

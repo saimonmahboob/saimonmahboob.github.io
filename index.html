@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<meta name="robots" content="noindex, nofollow">
-<title>Marketing Portfolio</title>
+<meta name="robots" content="noindex, nofollow" />
+<title>Saimon Mahboob — Marketing & Growth</title>
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 
 <script>
@@ -123,25 +123,10 @@
     .reveal { animation: none; }
     .scroll-rise { opacity: 1; transform: none; transition: none; }
     html { scroll-behavior: auto; }
-    #boot-cover { display: none !important; }
-  }
-
-  /* Pre-React boot cover — paints before scripts execute so the showcase intro
-     transitions in seamlessly without a flash of unstyled hero content.
-     We show the name from frame 0 (accepts brief italic-serif FOUT — closer to the
-     final look than a blank panel that pops in text 200ms later). */
-  #boot-cover {
-    position: fixed;
-    top: 0; right: 0; bottom: 0; left: 0;
-    width: 100vw; height: 100vh;
-    z-index: 8500;
-    background: var(--accent);
-    pointer-events: none;
   }
 </style>
 </head>
 <body class="grain">
-  <div id="boot-cover" aria-hidden="true"></div>
   <template id="__bundler_thumbnail">
     <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
       <rect width="200" height="200" fill="#f1f1ee"/>
@@ -162,29 +147,6 @@
   <script type="text/babel" src="components/Footer.jsx"></script>
   <script type="text/babel" src="app.jsx"></script>
   <script>
-    // Remove the pre-React boot cover once the React showcase overlay has mounted.
-    // Both the boot cover and the showcase render the same accent panel + italic name,
-    // so we remove the cover synchronously (no fade) the instant the overlay paints —
-    // a fade-out would visibly cross-fade two identical layers.
-    (function () {
-      const cover = document.getElementById('boot-cover');
-      if (!cover) return;
-      let removed = false;
-      const remove = () => { if (removed) return; removed = true; cover.remove(); };
-      const mo = new MutationObserver(() => {
-        if (document.querySelector('.hero-showcase, .hero-overlay')) {
-          mo.disconnect();
-          // Wait two animation frames so the React overlay has actually painted
-          // before we lift the boot cover — prevents a one-frame flash to white.
-          requestAnimationFrame(() => requestAnimationFrame(remove));
-        }
-      });
-      mo.observe(document.body, { childList: true, subtree: true });
-      // Fallback: if no overlay shows up within 1.8s (intro=off, etc.), remove anyway.
-      setTimeout(() => { mo.disconnect(); remove(); }, 1800);
-    })();
-  </script>
-  <script>
     // Apple-style scroll reveal: subtle rise + fade as elements enter the viewport.
     (function () {
       if (typeof window === 'undefined') return;
@@ -199,19 +161,13 @@
         '.reveal',               // hero already uses this (we skip those)
       ].join(',');
 
-      // Elements we never want to animate (navigation, footer, decorative chrome,
-      // and especially fixed-position overlays whose own positioning would be broken
-      // by `transform` from .scroll-rise).
+      // Elements we never want to animate (navigation, footer, decorative chrome).
       const SKIP = (el) =>
         el.closest('nav') ||
         el.closest('footer') ||
         el.closest('[data-no-rise]') ||
         el.classList.contains('reveal') || // hero handles its own intro
         el.classList.contains('scroll-rise') ||
-        el.classList.contains('hero-overlay') ||
-        el.classList.contains('hero-showcase') ||
-        el.id === 'boot-cover' ||
-        getComputedStyle(el).position === 'fixed' ||
         el.tagName === 'SCRIPT' ||
         el.tagName === 'STYLE';
 

@@ -202,7 +202,7 @@ function Contact({ underline = 'marker' }) {
           </div>
           <div style={contactStyles.detail}>
             <span style={contactStyles.detailLabel}>Looking for</span>
-            <span style={contactStyles.detailValue}>Marketing roles in tech</span>
+            <span style={contactStyles.detailValue}>Marketing & growth roles</span>
           </div>
           <div style={contactStyles.detail}>
             <span style={contactStyles.detailLabel}>Availability</span>

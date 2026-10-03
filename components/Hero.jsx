@@ -500,10 +500,6 @@ function Hero({ headline, flare = 'none', perWordRise = false, underline = 'mark
           <span>Saimon Mahboob</span>
         </div>
       )}
-      <div style={heroStyles.meta} className="reveal">
-        <span style={heroStyles.metaDot} className="hf-mono-bg"></span>
-        <span>OPEN TO TECH MARKETING ROLES · Q3 2026</span>
-      </div>
 
       <div style={heroStyles.grid} className="hero-grid">
         <div style={{ gridArea: 'headline' }}>
